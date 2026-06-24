@@ -1,58 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Enfermagem Escola — Sistema de Registro de Atendimentos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web desenvolvido para uma unidade da APAE com o objetivo de substituir o controle manual pelo registro digital de atendimentos
+realizados pela equipe de enfermagem.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre o projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+A equipe de enfermagem da APAE realiza diariamente uma série de atendimentos a assistidos
+(alunos, funcionários e familiares), incluindo administração de medicamentos, trocas, banhos e
+outros procedimentos. Até então, esses registros eram feitos manualmente em planilha, sem
+histórico estruturado, sem rastreabilidade de qual profissional realizou cada atendimento e sem
+forma prática de gerar relatórios para a coordenação.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O projeto nasceu de um levantamento de requisitos real: foram conduzidas entrevistas com a
+enfermeira responsável para mapear o fluxo de trabalho atual, identificar os tipos de atendimento
+existentes, entender as necessidades de consulta e relatório, e validar as decisões de modelagem
+antes de iniciar o desenvolvimento. Toda a documentação de arquitetura e modelagem foi produzida
+antes da primeira linha de código.
 
-## Learning Laravel
+O sistema permite o registro de atendimentos com suporte a lançamento em lote (vários tipos de
+atendimento para o mesmo assistido de uma vez), controle de status de realização (realizado ou
+recusado, com motivo obrigatório em caso de recusa), histórico completo com filtros e exportação
+em PDF, trilha de auditoria automática de todas as alterações, e cancelamento lógico de registros
+(sem exclusão física, preservando a integridade dos dados de saúde conforme boas práticas de
+LGPD).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Funcionalidades
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Cadastro de assistidos com categoria (aluno, funcionário ou familiar) e plano de saúde
+- Cadastro extensível de tipos de atendimento e profissionais da equipe
+- Lançamento de atendimentos com suporte a múltiplos profissionais por atendimento
+- Lançamento em lote: vários tipos de atendimento para o mesmo assistido em uma única tela
+- Registro de recusa de atendimento com motivo obrigatório
+- Detalhe de medicação vinculado a atendimentos do tipo Medicação
+- Histórico com filtros por assistido, período, tipo e profissional
+- Exportação do histórico em PDF para prestação de contas à coordenação
+- Dashboard com indicadores do dia e da semana
+- Cancelamento lógico de atendimentos com motivo (sem exclusão física)
+- Trilha de auditoria automática via Eloquent Observer
+- Controle de acesso por perfil (Admin e Enfermagem)
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Tecnologias
 
-```bash
-composer require laravel/boost --dev
+- **PHP 8.5**
+- **Laravel 12**
+- **MySQL 8**
+- **Tailwind CSS**
 
-php artisan boost:install
-```
+---
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Status do projeto
 
-## Contributing
+🚧 **Em desenvolvimento**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Fases concluídas:
+- Levantamento de requisitos e entrevista com a enfermeira responsável
+- Documento de modelagem e arquitetura (v2.0)
+- Migrations
+- Models e relacionamentos Eloquent
+- Seeders de dados iniciais
 
-## Code of Conduct
+Em andamento:
+- Controllers e rotas
+- Views Blade com Tailwind CSS
+- Policies e middleware de autorização
+- Observer de auditoria
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Autor
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Desenvolvido por **Marcelo** como projeto de estudo com caso de uso real.
+Desenvolvedor PHP Laravel
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[LinkedIn](https://linkedin.com/in/marcelo-lagazzi)
