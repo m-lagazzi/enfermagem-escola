@@ -2,7 +2,7 @@
 
     {{-- Logo / Nome do sistema --}}
     <div class="px-6 py-5 border-b border-gray-200">
-        <span class="text-lg font-semibold text-gray-800">🏥 Enfermagem APAE</span>
+        <span class="text-lg font-semibold text-gray-800">Enfermagem APAE</span>
     </div>
 
     {{-- Menu principal --}}
@@ -28,3 +28,20 @@
         </x-nav-link>
 
     </nav>
+
+    {{-- Rodapé da sidebar: usuário logado + logout --}}
+    <div class="px-4 py-4 border-t border-gray-200">
+        <div class="text-sm text-gray-600 mb-3">
+            {{ Auth::user()->name }}
+        </div>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit"
+                class="w-full text-left text-sm text-red-500 hover:text-red-700 transition">
+                Sair
+            </button>
+        </form>
+    </div>
+
+</aside>
