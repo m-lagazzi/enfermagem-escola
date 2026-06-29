@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HealthPlanController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\ServiceTypeController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -17,6 +18,9 @@ Route::middleware('auth')->group(function () {
         ->only(['index', 'create', 'store', 'edit', 'update']);
 
     Route::resource('professionals', ProfessionalController::class)
+        ->only(['index', 'create', 'store', 'edit', 'update']);
+
+    Route::resource('service-types', ServiceTypeController::class)
         ->only(['index', 'create', 'store', 'edit', 'update']);
 });
 
